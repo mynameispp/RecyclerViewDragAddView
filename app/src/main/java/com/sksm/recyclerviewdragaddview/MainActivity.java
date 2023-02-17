@@ -132,6 +132,10 @@ public class MainActivity extends AppCompatActivity implements OnTouchItemListen
                     moveParams.topMargin = viewPosition[1] + moveY;
                     moveParams.leftMargin = viewPosition[0] + moveX;
                     touchView.setLayoutParams(moveParams);
+
+                    if (myViewBinding.myRv.getVisibility()==View.VISIBLE) {
+                        myViewBinding.myRv.setVisibility(View.GONE);
+                    }
                 }
                 break;
             case MotionEvent.ACTION_UP:
@@ -163,6 +167,7 @@ public class MainActivity extends AppCompatActivity implements OnTouchItemListen
                         touchView = null;
                     }
                 }
+                myViewBinding.myRv.setVisibility(View.VISIBLE);
                 mHandler.removeCallbacks(runnable);
                 manager.setScrollEnabled(true);
                 break;
